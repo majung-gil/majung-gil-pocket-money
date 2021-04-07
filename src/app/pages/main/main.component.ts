@@ -24,8 +24,9 @@ export class MainComponent implements OnInit {
 
   async ngOnInit() {
     // local 에 저장된 유저 정보를 바로 갖고온당
-    this.user = JSON.parse(localStorage.getItem("user"));
-    console.log(this.user);
+    const user = JSON.parse(localStorage.getItem("user"));
+    // remain 떔시 다시 조회해쥼
+    this.user = await this.db.majung_select_user({ user_idx: user.user_idx });
 
     this.dataSource = await this.db.majung_select_user_money(
       this.user.user_idx
@@ -33,10 +34,8 @@ export class MainComponent implements OnInit {
     // console.log(result);
   }
 
-  open_new_dialog() {
-    this.new_dialog = true;
-
-    this.dialog.open(DialogDataExampleDialog);
+  go_new() {
+    this.router.navigateByUrl("/new");
   }
 }
 

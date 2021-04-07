@@ -1,4 +1,4 @@
-<div style="padding: 10px">
+<div style="padding: 10px" *ngIf="user">
   <mat-card style="background-color: #ebe2d5">
     <h4 style="color: rgb(85, 85, 85); line-height: 33px">
       {{ user.user_name }}님, <br />
@@ -12,14 +12,17 @@
       마중길 잔액 <br />
       총 <b>{{ user.user_total_remain | number: "1.0-0" }}원</b> <br />
       남았어요 :)
-      <!-- <button style="zoom: 0.9" mat-raised-button (click)="open_new_dialog()">
-        ✍🏻 기록
-      </button> -->
     </p>
   </mat-card>
 
   <br />
-  <h4>📊 상세내역</h4>
+  <div style="display: flex; justify-content: space-between">
+    <h3>📊 상세내역</h3>
+    <button style="zoom: 0.8" mat-raised-button (click)="go_new()">
+      ✍🏻 기록
+    </button>
+  </div>
+  <br />
   <table
     mat-table
     [dataSource]="dataSource"
@@ -61,4 +64,6 @@
     ></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
   </table>
+
+  <div *ngIf="dataSource.length === 0">아직 작성한 상세내역이 없으시군요!</div>
 </div>

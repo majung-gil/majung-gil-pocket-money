@@ -15,6 +15,7 @@ import { MatDialogModule } from "@angular/material/dialog";
 import { GraphQLModule } from "./graphql.module";
 import { HttpClientModule } from "@angular/common/http";
 import { FormsModule } from "@angular/forms";
+import { MatIconModule } from "@angular/material/icon";
 
 @NgModule({
   declarations: [AppComponent, StartComponent, NewComponent, MainComponent],
@@ -30,6 +31,7 @@ import { FormsModule } from "@angular/forms";
     GraphQLModule,
     HttpClientModule,
     FormsModule,
+    MatIconModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

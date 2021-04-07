@@ -1,1 +1,46 @@
-<p>new works!</p>
+<div style="padding: 20px; margin-top: 30%">
+  <h2>카페를 다녀오셨군요 :)</h2>
+  <p>새로운 내역을 추가합니다 😎</p>
+  <br />
+  <form>
+    <mat-form-field appearance="outline" style="width: 100%">
+      <mat-label>카페명</mat-label>
+      <input
+        matInput
+        placeholder="카페명을 입력해주세용"
+        name="money_title"
+        [(ngModel)]="data.money_title"
+        required
+      />
+      <mat-icon matSuffix>favorite</mat-icon>
+    </mat-form-field>
+    <mat-form-field appearance="outline" style="width: 100%">
+      <mat-label>사용내역 (ex.아메리카노)</mat-label>
+      <input
+        matInput
+        placeholder="사용내역을 입력해주세용"
+        name="money_contents"
+        [(ngModel)]="data.money_contents"
+        required
+      />
+      <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+    </mat-form-field>
+    <mat-form-field appearance="outline" style="width: 100%">
+      <mat-label>사용금액</mat-label>
+      <input
+        matInput
+        type="number"
+        placeholder="사용금액을 입력해주세용"
+        name="money_amount"
+        [(ngModel)]="data.money_amount"
+        required
+      />
+      <mat-icon matSuffix>attach_money</mat-icon>
+    </mat-form-field>
+  </form>
+
+  <button mat-raised-button (click)="save()" style="width: 100%">
+    저장하기
+  </button>
+  <br /><br />
+</div>

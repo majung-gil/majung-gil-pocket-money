@@ -1,6 +1,10 @@
 import { Injectable } from "@angular/core";
 import { Apollo, QueryRef } from "apollo-angular";
-import { majung_select_user, majung_select_user_money } from "./queries";
+import {
+  majung_add_money,
+  majung_select_user,
+  majung_select_user_money,
+} from "./queries";
 
 @Injectable({
   providedIn: "root",
@@ -56,20 +60,19 @@ export class DataService {
   //     }
   // }
 
-  //   public async login_social(social_id, social_access_token){
-  //     try {
-  //       const result: any = await this.apollo
-  //       .mutate({
-  //         mutation: login_social,
-  //         variables: {
-  //           social_id,
-  //           social_access_token
-  //         }
-  //       })
-  //       .toPromise();
-  //     return result.data.login_social;
-  //     } catch (err) {
-  //         alert(err)
-  //     }
-  //   }
+  public async majung_add_money(data) {
+    try {
+      const result: any = await this.apollo
+        .mutate({
+          mutation: majung_add_money,
+          variables: {
+            data,
+          },
+        })
+        .toPromise();
+      return result.data.majung_add_money;
+    } catch (err) {
+      alert(err);
+    }
+  }
 }
