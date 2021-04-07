@@ -1,4 +1,5 @@
-<button mat-raised-button>✍🏻 기록</button> <br /><br />
+<button mat-raised-button (click)="open_new_dialog()">✍🏻 기록</button>
+<br /><br />
 <mat-card>
   <h1>💸</h1>
   <p style="font-size: 20px">
@@ -41,3 +42,17 @@
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
 </table>
+
+<div mat-dialog-content *ngIf="new_dialog">
+  <p>What's your favorite animal?</p>
+  <mat-form-field>
+    <mat-label>Favorite Animal</mat-label>
+    <input matInput />
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button>No Thanks</button>
+  <button mat-button [mat-dialog-close]="!new_dialog" cdkFocusInitial>
+    Ok
+  </button>
+</div>

@@ -1,4 +1,7 @@
 import { Component, OnInit } from "@angular/core";
+import { MatDialog, MAT_DIALOG_DATA } from "@angular/material/dialog";
+import { Router } from "@angular/router";
+import { DataService } from "src/graphql/data-services";
 
 @Component({
   selector: "app-main",
@@ -21,7 +24,24 @@ export class MainComponent implements OnInit {
 
   public displayedColumns: string[] = ["position", "name", "weight", "symbol"];
 
-  constructor() {}
+  public new_dialog: boolean = false;
+  constructor(
+    private router: Router,
+    public dialog: MatDialog,
+    private db: DataService
+  ) {}
 
-  ngOnInit() {}
+  async ngOnInit() {
+    console.log(await this.db.select_main());
+  }
+
+  open_new_dialog() {
+    this.new_dialog = true;
+
+    this.dialog.open(DialogDataExampleDialog);
+  }
+}
+
+export class DialogDataExampleDialog {
+  // constructor(@Inject(MAT_DIALOG_DATA) public data: DialogData) {}
 }

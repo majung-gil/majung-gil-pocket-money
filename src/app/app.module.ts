@@ -11,6 +11,9 @@ import { MatCardModule } from "@angular/material/card";
 import { MatButtonModule } from "@angular/material/button";
 import { MatTableModule } from "@angular/material/table";
 import { MatInputModule } from "@angular/material/input";
+import { MatDialogModule } from "@angular/material/dialog";
+import { GraphQLModule } from "./graphql.module";
+import { HttpClientModule } from "@angular/common/http";
 
 @NgModule({
   declarations: [AppComponent, StartComponent, NewComponent, MainComponent],
@@ -22,6 +25,9 @@ import { MatInputModule } from "@angular/material/input";
     MatButtonModule,
     MatTableModule,
     MatInputModule,
+    MatDialogModule,
+    GraphQLModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
