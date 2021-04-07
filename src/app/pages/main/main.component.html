@@ -1,58 +1,62 @@
-<button mat-raised-button (click)="open_new_dialog()">✍🏻 기록</button>
-<br /><br />
-<mat-card>
-  <h1>💸</h1>
-  <p style="font-size: 20px">
-    <span>유진 님!</span> <br /><br />
-    총 <b>35,000원</b> <br />
-    남았어요 😁
-  </p>
-</mat-card>
+<div style="padding: 10px">
+  <mat-card style="background-color: #ebe2d5">
+    <h4 style="color: rgb(85, 85, 85); line-height: 33px">
+      유진님, <br />
+      오늘도 행복한 하루 보내세요!
+    </h4>
+  </mat-card>
+  <br />
+  <mat-card>
+    <h1>💸</h1>
+    <p style="font-size: 20px; line-height: 36px">
+      마중길 잔액 <br />
+      총 <b>35,000원</b> <br />
+      남았어요 :)
+      <!-- <button style="zoom: 0.9" mat-raised-button (click)="open_new_dialog()">
+        ✍🏻 기록
+      </button> -->
+    </p>
+  </mat-card>
 
-<br />
-<h4>📊 상세내역</h4>
-<table mat-table [dataSource]="dataSource" style="width: 100%">
-  <!--- Note that these columns can be defined in any order.
+  <br />
+  <h4>📊 상세내역</h4>
+  <table
+    mat-table
+    [dataSource]="dataSource"
+    style="width: 100%; margin-top: 5px"
+  >
+    <!--- Note that these columns can be defined in any order.
           The actual rendered columns are set as a property on the row definition" -->
 
-  <!-- Position Column -->
-  <ng-container matColumnDef="position">
-    <th mat-header-cell *matHeaderCellDef>No.</th>
-    <td mat-cell *matCellDef="let element">{{ element.position }}</td>
-  </ng-container>
+    <!-- Position Column -->
+    <ng-container matColumnDef="position">
+      <th mat-header-cell *matHeaderCellDef style="display: none">No.</th>
+      <td mat-cell *matCellDef="let element">{{ element.position }}</td>
+    </ng-container>
 
-  <!-- Name Column -->
-  <ng-container matColumnDef="name">
-    <th mat-header-cell *matHeaderCellDef>Name</th>
-    <td mat-cell *matCellDef="let element">{{ element.name }}</td>
-  </ng-container>
+    <!-- Name Column -->
+    <ng-container matColumnDef="name" style="display: none">
+      <th mat-header-cell *matHeaderCellDef>Name</th>
+      <td mat-cell *matCellDef="let element">{{ element.name }}</td>
+    </ng-container>
 
-  <!-- Weight Column -->
-  <ng-container matColumnDef="weight">
-    <th mat-header-cell *matHeaderCellDef>Weight</th>
-    <td mat-cell *matCellDef="let element">{{ element.weight }}</td>
-  </ng-container>
+    <!-- Weight Column -->
+    <ng-container matColumnDef="weight" style="display: none">
+      <th mat-header-cell *matHeaderCellDef>Weight</th>
+      <td mat-cell *matCellDef="let element">{{ element.weight }}</td>
+    </ng-container>
 
-  <!-- Symbol Column -->
-  <ng-container matColumnDef="symbol">
-    <th mat-header-cell *matHeaderCellDef>Symbol</th>
-    <td mat-cell *matCellDef="let element">{{ element.symbol }}</td>
-  </ng-container>
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="symbol" style="display: none">
+      <th mat-header-cell *matHeaderCellDef>Symbol</th>
+      <td mat-cell *matCellDef="let element">{{ element.symbol }}</td>
+    </ng-container>
 
-  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-  <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
-</table>
-
-<div mat-dialog-content *ngIf="new_dialog">
-  <p>What's your favorite animal?</p>
-  <mat-form-field>
-    <mat-label>Favorite Animal</mat-label>
-    <input matInput />
-  </mat-form-field>
-</div>
-<div mat-dialog-actions>
-  <button mat-button>No Thanks</button>
-  <button mat-button [mat-dialog-close]="!new_dialog" cdkFocusInitial>
-    Ok
-  </button>
+    <tr
+      mat-header-row
+      *matHeaderRowDef="displayedColumns"
+      style="display: none"
+    ></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
 </div>
