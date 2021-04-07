@@ -9,22 +9,13 @@ import { DataService } from "src/graphql/data-services";
   styleUrls: ["./main.component.scss"],
 })
 export class MainComponent implements OnInit {
-  public dataSource = [
-    { position: 1, name: "Hydrogen", weight: 1.0079, symbol: "H" },
-    { position: 2, name: "Helium", weight: 4.0026, symbol: "He" },
-    { position: 3, name: "Lithium", weight: 6.941, symbol: "Li" },
-    { position: 4, name: "Beryllium", weight: 9.0122, symbol: "Be" },
-    { position: 5, name: "Boron", weight: 10.811, symbol: "B" },
-    { position: 6, name: "Carbon", weight: 12.0107, symbol: "C" },
-    { position: 7, name: "Nitrogen", weight: 14.0067, symbol: "N" },
-    { position: 8, name: "Oxygen", weight: 15.9994, symbol: "O" },
-    { position: 9, name: "Fluorine", weight: 18.9984, symbol: "F" },
-    { position: 10, name: "Neon", weight: 20.1797, symbol: "Ne" },
-  ];
+  public dataSource = [];
 
-  public displayedColumns: string[] = ["position", "name", "weight", "symbol"];
+  public displayedColumns: string[] = ["position", "name", "weight"];
 
   public new_dialog: boolean = false;
+  public user;
+
   constructor(
     private router: Router,
     public dialog: MatDialog,
@@ -32,7 +23,14 @@ export class MainComponent implements OnInit {
   ) {}
 
   async ngOnInit() {
-    console.log(await this.db.select_main());
+    // local 에 저장된 유저 정보를 바로 갖고온당
+    this.user = JSON.parse(localStorage.getItem("user"));
+    console.log(this.user);
+
+    this.dataSource = await this.db.majung_select_user_money(
+      this.user.user_idx
+    );
+    // console.log(result);
   }
 
   open_new_dialog() {

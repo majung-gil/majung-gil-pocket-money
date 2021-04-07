@@ -14,6 +14,7 @@ import { MatInputModule } from "@angular/material/input";
 import { MatDialogModule } from "@angular/material/dialog";
 import { GraphQLModule } from "./graphql.module";
 import { HttpClientModule } from "@angular/common/http";
+import { FormsModule } from "@angular/forms";
 
 @NgModule({
   declarations: [AppComponent, StartComponent, NewComponent, MainComponent],
@@ -28,6 +29,7 @@ import { HttpClientModule } from "@angular/common/http";
     MatDialogModule,
     GraphQLModule,
     HttpClientModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

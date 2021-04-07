@@ -1,7 +1,7 @@
 <div style="padding: 10px">
   <mat-card style="background-color: #ebe2d5">
     <h4 style="color: rgb(85, 85, 85); line-height: 33px">
-      유진님, <br />
+      {{ user.user_name }}님, <br />
       오늘도 행복한 하루 보내세요!
     </h4>
   </mat-card>
@@ -10,7 +10,7 @@
     <h1>💸</h1>
     <p style="font-size: 20px; line-height: 36px">
       마중길 잔액 <br />
-      총 <b>35,000원</b> <br />
+      총 <b>{{ user.user_total_remain | number: "1.0-0" }}원</b> <br />
       남았어요 :)
       <!-- <button style="zoom: 0.9" mat-raised-button (click)="open_new_dialog()">
         ✍🏻 기록
@@ -31,27 +31,29 @@
     <!-- Position Column -->
     <ng-container matColumnDef="position">
       <th mat-header-cell *matHeaderCellDef style="display: none">No.</th>
-      <td mat-cell *matCellDef="let element">{{ element.position }}</td>
+      <td mat-cell *matCellDef="let element">
+        {{ element.regist_datetime | date: "MM.dd" }}
+      </td>
     </ng-container>
 
     <!-- Name Column -->
     <ng-container matColumnDef="name" style="display: none">
       <th mat-header-cell *matHeaderCellDef>Name</th>
-      <td mat-cell *matCellDef="let element">{{ element.name }}</td>
+      <td mat-cell *matCellDef="let element">
+        <span style="font-weight: bold">{{ element.money_title }} </span><br />
+        <span style="font-weight: light; zoom: 0.9">{{
+          element.money_contents
+        }}</span>
+      </td>
     </ng-container>
 
     <!-- Weight Column -->
     <ng-container matColumnDef="weight" style="display: none">
       <th mat-header-cell *matHeaderCellDef>Weight</th>
-      <td mat-cell *matCellDef="let element">{{ element.weight }}</td>
+      <td mat-cell *matCellDef="let element">
+        {{ element.money_amount | number: "1.0-0" }}
+      </td>
     </ng-container>
-
-    <!-- Symbol Column -->
-    <ng-container matColumnDef="symbol" style="display: none">
-      <th mat-header-cell *matHeaderCellDef>Symbol</th>
-      <td mat-cell *matCellDef="let element">{{ element.symbol }}</td>
-    </ng-container>
-
     <tr
       mat-header-row
       *matHeaderRowDef="displayedColumns"
