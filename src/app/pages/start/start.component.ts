@@ -13,9 +13,16 @@ export class StartComponent implements OnInit {
   };
   constructor(private router: Router, private db: DataService) {}
 
-  ngOnInit() {}
+  async ngOnInit() {
+    const tt = await this.db.majung_select_user_money(1);
+    console.log(tt);
+  }
 
   async go_main() {
+    if (!this.value.user_name || !this.value.user_phone) {
+      alert("이름과 전화번호를 입력해주세영");
+      return;
+    }
     // 여기서 이름을 찾아서 user_idx를 넘겨줍시당
     // 없으면 빠꾸~
     const user = await this.db.majung_select_user(this.value);

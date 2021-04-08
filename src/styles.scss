@@ -1,6 +1,7 @@
 // Custom Theming for Angular Material
 // For more information: https://material.angular.io/guide/theming
 @import "~@angular/material/theming";
+@import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css);
 // Plus imports for other components in your app.
 
 // Include the common styles for Angular Material. We include this here so that you only
@@ -30,7 +31,7 @@ $majung-gil-pocket-money-theme: mat-light-theme(
 @include angular-material-theme($majung-gil-pocket-money-theme);
 
 body * {
-  font-family: "MaruBuri-Regular";
+  font-family: "Spoqa Han Sans", "Spoqa Han Sans JP", "Sans-serif";
   z-index: 1;
   // background-color: #0E79B4;
   margin: 0;
@@ -90,4 +91,8 @@ select:focus {
       // border:1px solid #efefef;
     }
   }
+}
+
+* {
+  font-family: "Spoqa Han Sans", "Spoqa Han Sans JP", "Sans-serif";
 }
