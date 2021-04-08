@@ -3,6 +3,7 @@ import { Apollo, QueryRef } from "apollo-angular";
 import {
   majung_add_money,
   majung_select_user,
+  majung_select_user_list,
   majung_select_user_money,
 } from "./queries";
 
@@ -71,6 +72,20 @@ export class DataService {
         })
         .toPromise();
       return result.data.majung_add_money;
+    } catch (err) {
+      alert(err);
+    }
+  }
+
+  public async majung_select_user_list() {
+    try {
+      const result: any = await this.apollo
+        .query({
+          query: majung_select_user_list,
+        })
+        .toPromise();
+
+      return result.data.majung_select_user_list;
     } catch (err) {
       alert(err);
     }

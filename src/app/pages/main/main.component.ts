@@ -12,9 +12,13 @@ export class MainComponent implements OnInit {
   public dataSource = [];
 
   public displayedColumns: string[] = ["position", "name", "weight"];
+  public displayedColumns2: string[] = ["position", "name"];
 
   public new_dialog: boolean = false;
   public user;
+
+  public all_user;
+  public sum_user_remain = 0;
 
   constructor(
     private router: Router,
@@ -31,7 +35,13 @@ export class MainComponent implements OnInit {
     this.dataSource = await this.db.majung_select_user_money(
       this.user.user_idx
     );
-    // console.log(result);
+
+    this.all_user = await this.db.majung_select_user_list();
+    for (let item of this.all_user) {
+      this.sum_user_remain += 75000 - item.user_total_remain; // 유저 잔액 다 더하기
+    }
+
+    console.log(this.sum_user_remain);
   }
 
   go_new() {

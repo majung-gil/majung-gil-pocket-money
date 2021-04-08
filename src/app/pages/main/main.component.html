@@ -1,23 +1,62 @@
-<div style="padding: 10px" *ngIf="user">
-  <mat-card style="background-color: #ebe2d5">
+<div style="padding: 16px" *ngIf="user">
+  <mat-card style="background-color: #f0e5de">
     <h4 style="color: rgb(85, 85, 85); line-height: 33px">
       {{ user.user_name }}님, <br />
       오늘도 행복한 하루 보내세요!
     </h4>
   </mat-card>
   <br />
+
+  <mat-card>
+    <h1>🤭</h1>
+    <p style="font-size: 20px; line-height: 36px">
+      지원금 잔액 <br />
+      총 <b>{{ 600000 - sum_user_remain | number: "1.0-0" }}원</b>
+    </p>
+  </mat-card>
+  <br />
+
   <mat-card>
     <h1>💸</h1>
     <p style="font-size: 20px; line-height: 36px">
-      마중길 잔액 <br />
+      유진님! <br />
       총 <b>{{ user.user_total_remain | number: "1.0-0" }}원</b> <br />
       남았어요 :)
     </p>
   </mat-card>
 
   <br />
+  <h3>👩‍👩‍👧‍👧 팀원 잔액현황</h3>
+  <table mat-table [dataSource]="all_user" style="width: 100%; margin-top: 8px">
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+
+    <!-- Position Column -->
+    <ng-container matColumnDef="position">
+      <th mat-header-cell *matHeaderCellDef style="display: none">No.</th>
+      <td mat-cell *matCellDef="let element" style="padding-right: 0px">
+        {{ element.user_name }}
+      </td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="name" style="display: none">
+      <th mat-header-cell *matHeaderCellDef>Name</th>
+      <td mat-cell *matCellDef="let element" style="padding-right: 0px">
+        {{ element.user_total_remain | number: "1.0-0" }}원
+      </td>
+    </ng-container>
+    <tr
+      mat-header-row
+      *matHeaderRowDef="displayedColumns2"
+      style="display: none"
+    ></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns2"></tr>
+  </table>
+
+  <br />
   <div style="display: flex; justify-content: space-between">
-    <h3>📊 상세내역</h3>
+    <h3>📊 내 사용내역</h3>
     <button style="zoom: 0.8" mat-raised-button (click)="go_new()">
       ✍🏻 기록
     </button>

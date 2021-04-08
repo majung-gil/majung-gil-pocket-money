@@ -21,8 +21,20 @@ export const majung_select_user_money = gql`
     }
   }
 `;
+
 export const majung_add_money = gql`
   mutation majung_add_money($data: InputMajungMoney!) {
     majung_add_money(data: $data)
+  }
+`;
+
+export const majung_select_user_list = gql`
+  query majung_select_user_list {
+    majung_select_user_list {
+      user_idx
+      user_name
+      user_phone
+      user_total_remain
+    }
   }
 `;
