@@ -16,9 +16,16 @@ import { GraphQLModule } from "./graphql.module";
 import { HttpClientModule } from "@angular/common/http";
 import { FormsModule } from "@angular/forms";
 import { MatIconModule } from "@angular/material/icon";
+import { DialogComponent } from "./pages/dialog/dialog.component";
 
 @NgModule({
-  declarations: [AppComponent, StartComponent, NewComponent, MainComponent],
+  declarations: [
+    AppComponent,
+    StartComponent,
+    NewComponent,
+    MainComponent,
+    DialogComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -35,5 +42,6 @@ import { MatIconModule } from "@angular/material/icon";
   ],
   providers: [],
   bootstrap: [AppComponent],
+  entryComponents: [DialogComponent],
 })
 export class AppModule {}

@@ -3,9 +3,11 @@ import { Apollo, QueryRef } from "apollo-angular";
 import {
   calc_total_remain,
   majung_add_money,
+  majung_delete_money,
   majung_select_user,
   majung_select_user_list,
   majung_select_user_money,
+  majung_update_money,
 } from "./queries";
 
 @Injectable({
@@ -101,6 +103,38 @@ export class DataService {
         .toPromise();
 
       return result.data.calc_total_remain;
+    } catch (err) {
+      alert(err);
+    }
+  }
+
+  public async majung_update_money(data) {
+    console.log(data);
+    try {
+      const result: any = await this.apollo
+        .mutate({
+          mutation: majung_update_money,
+
+          variables: {
+            data,
+          },
+        })
+        .toPromise();
+      return result.data.majung_update_money;
+    } catch (err) {
+      alert(err);
+    }
+  }
+
+  public async majung_delete_money(data) {
+    try {
+      const result: any = await this.apollo
+        .mutate({
+          mutation: majung_delete_money,
+          variables: data,
+        })
+        .toPromise();
+      return result.data.majung_delete_money;
     } catch (err) {
       alert(err);
     }

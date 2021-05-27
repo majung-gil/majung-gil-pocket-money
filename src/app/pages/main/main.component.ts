@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { MatDialog, MAT_DIALOG_DATA } from "@angular/material/dialog";
 import { Router } from "@angular/router";
 import { DataService } from "src/graphql/data-services";
+import { DialogComponent } from "../dialog/dialog.component";
 
 @Component({
   selector: "app-main",
@@ -11,7 +12,7 @@ import { DataService } from "src/graphql/data-services";
 export class MainComponent implements OnInit {
   public dataSource = [];
 
-  public displayedColumns: string[] = ["position", "name", "weight"];
+  public displayedColumns: string[] = ["position", "name", "weight", "btn"];
   public displayedColumns2: string[] = ["position", "name"];
 
   public new_dialog: boolean = false;
@@ -60,4 +61,13 @@ export class MainComponent implements OnInit {
       alert(err);
     }
   }
+
+  update(data) {
+    console.log(data);
+    this.dialog.open(DialogComponent, {
+      data,
+    });
+  }
+
+  delete() {}
 }

@@ -18,6 +18,8 @@ export const majung_select_user_money = gql`
       money_contents
       money_amount
       regist_datetime
+      user_idx
+      money_idx
     }
   }
 `;
@@ -42,5 +44,17 @@ export const majung_select_user_list = gql`
 export const calc_total_remain = gql`
   query calc_total_remain {
     calc_total_remain
+  }
+`;
+
+export const majung_update_money = gql`
+  mutation majung_update_money($data: InputMajungMoney!) {
+    majung_update_money(data: $data)
+  }
+`;
+
+export const majung_delete_money = gql`
+  mutation majung_delete_money($data: InputMajungMoney!) {
+    majung_delete_money(data: $data)
   }
 `;
