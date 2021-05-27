@@ -27,9 +27,27 @@
 
   <br />
 
+  <mat-card
+    *ngIf="user.user_idx == 1 || user.user_idx == 2 || user.user_idx == 3"
+  >
+    <h1>🐭🧀</h1>
+    <p style="font-size: 20px; line-height: 36px">회계의 특혜</p>
+    <br />
+    <button mat-raised-button (click)="go_remain()">
+      💰 전체팀원 사용내역
+    </button>
+  </mat-card>
+
+  <br />
+
   <div style="display: flex; justify-content: space-between">
     <h3>👩‍👩‍👧‍👧 팀원 잔액현황</h3>
-    <button style="zoom: 0.8" mat-raised-button (click)="calc_total_remain()">
+    <button
+      *ngIf="user.user_idx == 1"
+      style="zoom: 0.8"
+      mat-raised-button
+      (click)="calc_total_remain()"
+    >
       💰 잔액갱신
     </button>
   </div>

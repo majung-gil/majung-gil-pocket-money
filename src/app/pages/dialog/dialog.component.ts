@@ -19,11 +19,15 @@ export class DialogComponent implements OnInit {
   }
 
   async save() {
-    if (this.data.regist_datetime) {
-      delete this.data.regist_datetime;
-    }
+    const update = {
+      money_amount: this.data.money_amount,
+      money_contents: this.data.money_contents,
+      money_idx: this.data.money_idx,
+      money_title: this.data.money_title,
+      user_idx: this.data.user_idx,
+    };
     try {
-      await this.db.majung_update_money(this.data);
+      await this.db.majung_update_money(update);
       this.dialog.closeAll();
     } catch (err) {
       alert(err);

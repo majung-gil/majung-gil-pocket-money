@@ -17,6 +17,7 @@ import { HttpClientModule } from "@angular/common/http";
 import { FormsModule } from "@angular/forms";
 import { MatIconModule } from "@angular/material/icon";
 import { DialogComponent } from "./pages/dialog/dialog.component";
+import { RemainComponent } from './pages/remain/remain.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { DialogComponent } from "./pages/dialog/dialog.component";
     NewComponent,
     MainComponent,
     DialogComponent,
+    RemainComponent,
   ],
   imports: [
     BrowserModule,

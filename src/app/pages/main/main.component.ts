@@ -53,6 +53,10 @@ export class MainComponent implements OnInit {
     this.router.navigateByUrl("/new");
   }
 
+  go_remain() {
+    this.router.navigateByUrl("/remain");
+  }
+
   async calc_total_remain() {
     try {
       await this.db.calc_total_remain();

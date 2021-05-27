@@ -1,0 +1,64 @@
+<div style="padding: 5px">
+  <div style="display: flex; justify-content: space-between">
+    <h3>📊 전체 사용내역</h3>
+  </div>
+  <br />
+  <table mat-table [dataSource]="data" style="width: 100%; margin-top: 5px">
+    <!--- Note that these columns can be defined in any order.
+                The actual rendered columns are set as a property on the row definition" -->
+
+    <!-- Position Column -->
+    <ng-container matColumnDef="position">
+      <th mat-header-cell *matHeaderCellDef style="display: none">No.</th>
+      <td mat-cell *matCellDef="let element">
+        {{ element.regist_datetime | date: "MM.dd" }}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="user">
+      <th mat-header-cell *matHeaderCellDef style="display: none">No.</th>
+      <td mat-cell *matCellDef="let element">
+        {{ element.user_name }}
+      </td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="name" style="display: none">
+      <th mat-header-cell *matHeaderCellDef>Name</th>
+      <td mat-cell *matCellDef="let element">
+        <span style="font-weight: bold">{{ element.money_title }} </span><br />
+        <span style="font-weight: light; zoom: 0.9">{{
+          element.money_contents
+        }}</span>
+      </td>
+    </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="weight" style="display: none">
+      <th mat-header-cell *matHeaderCellDef>Weight</th>
+      <td mat-cell *matCellDef="let element">
+        {{ element.money_amount | number: "1.0-0" }}원
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="btn" style="display: none">
+      <th mat-header-cell *matHeaderCellDef>Weight</th>
+      <td mat-cell *matCellDef="let element" style="zoom: 0.8; padding: 0px">
+        <button mat-raised-button (click)="update(element)">수정</button>
+        <button mat-raised-button (click)="delete(element)">삭제</button>
+      </td>
+    </ng-container>
+
+    <tr
+      mat-header-row
+      *matHeaderRowDef="displayedColumns"
+      style="display: none"
+    ></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+
+  <div *ngIf="data && data.length === 0">
+    아직 작성한 상세내역이 없으시군요!
+  </div>
+  <!-- </div> -->
+</div>

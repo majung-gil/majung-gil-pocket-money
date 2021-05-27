@@ -58,3 +58,17 @@ export const majung_delete_money = gql`
     majung_delete_money(data: $data)
   }
 `;
+
+export const majung_select_user_money_all = gql`
+  query majung_select_user_money_all {
+    majung_select_user_money_all {
+      money_title
+      money_contents
+      money_amount
+      regist_datetime
+      user_idx
+      money_idx
+      user_name
+    }
+  }
+`;

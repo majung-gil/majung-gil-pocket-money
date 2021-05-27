@@ -2,6 +2,7 @@ import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
 import { MainComponent } from "./pages/main/main.component";
 import { NewComponent } from "./pages/new/new.component";
+import { RemainComponent } from "./pages/remain/remain.component";
 import { StartComponent } from "./pages/start/start.component";
 
 const routes: Routes = [
@@ -20,6 +21,10 @@ const routes: Routes = [
   {
     path: "new",
     component: NewComponent,
+  },
+  {
+    path: "remain",
+    component: RemainComponent,
   },
 ];
 

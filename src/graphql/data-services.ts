@@ -7,6 +7,7 @@ import {
   majung_select_user,
   majung_select_user_list,
   majung_select_user_money,
+  majung_select_user_money_all,
   majung_update_money,
 } from "./queries";
 
@@ -136,6 +137,20 @@ export class DataService {
         })
         .toPromise();
       return result.data.majung_delete_money;
+    } catch (err) {
+      alert(err);
+    }
+  }
+
+  public async majung_select_user_money_all() {
+    try {
+      const result: any = await this.apollo
+        .query({
+          query: majung_select_user_money_all,
+        })
+        .toPromise();
+
+      return result.data.majung_select_user_money_all;
     } catch (err) {
       alert(err);
     }
