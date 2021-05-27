@@ -69,5 +69,19 @@ export class MainComponent implements OnInit {
     });
   }
 
-  delete() {}
+  async delete(data) {
+    if (confirm(`${data.money_title} 사용내역을 삭제하시겠습니까?`) == false) {
+      return;
+    }
+
+    try {
+      await this.db.majung_delete_money({
+        money_idx: data.money_idx,
+        user_idx: data.user_idx,
+      });
+      this.load_data();
+    } catch (err) {
+      alert(err);
+    }
+  }
 }

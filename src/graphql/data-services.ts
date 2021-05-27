@@ -114,7 +114,6 @@ export class DataService {
       const result: any = await this.apollo
         .mutate({
           mutation: majung_update_money,
-
           variables: {
             data,
           },
@@ -131,7 +130,9 @@ export class DataService {
       const result: any = await this.apollo
         .mutate({
           mutation: majung_delete_money,
-          variables: data,
+          variables: {
+            data,
+          },
         })
         .toPromise();
       return result.data.majung_delete_money;
