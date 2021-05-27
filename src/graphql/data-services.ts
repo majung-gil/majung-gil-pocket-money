@@ -1,6 +1,7 @@
 import { Injectable } from "@angular/core";
 import { Apollo, QueryRef } from "apollo-angular";
 import {
+  calc_total_remain,
   majung_add_money,
   majung_select_user,
   majung_select_user_list,
@@ -86,6 +87,20 @@ export class DataService {
         .toPromise();
 
       return result.data.majung_select_user_list;
+    } catch (err) {
+      alert(err);
+    }
+  }
+
+  public async calc_total_remain() {
+    try {
+      const result: any = await this.apollo
+        .query({
+          query: calc_total_remain,
+        })
+        .toPromise();
+
+      return result.data.calc_total_remain;
     } catch (err) {
       alert(err);
     }

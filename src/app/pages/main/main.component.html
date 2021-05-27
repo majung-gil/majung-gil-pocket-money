@@ -26,7 +26,13 @@
   </mat-card>
 
   <br />
-  <h3>👩‍👩‍👧‍👧 팀원 잔액현황</h3>
+
+  <div style="display: flex; justify-content: space-between">
+    <h3>👩‍👩‍👧‍👧 팀원 잔액현황</h3>
+    <button style="zoom: 0.8" mat-raised-button (click)="calc_total_remain()">
+      💰 잔액갱신
+    </button>
+  </div>
   <table mat-table [dataSource]="all_user" style="width: 100%; margin-top: 8px">
     <!--- Note that these columns can be defined in any order.
           The actual rendered columns are set as a property on the row definition" -->

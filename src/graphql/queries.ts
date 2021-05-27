@@ -38,3 +38,9 @@ export const majung_select_user_list = gql`
     }
   }
 `;
+
+export const calc_total_remain = gql`
+  query calc_total_remain {
+    calc_total_remain
+  }
+`;

@@ -27,6 +27,10 @@ export class MainComponent implements OnInit {
   ) {}
 
   async ngOnInit() {
+    this.load_data();
+  }
+
+  async load_data() {
     // local 에 저장된 유저 정보를 바로 갖고온당
     const user = JSON.parse(localStorage.getItem("user"));
     // remain 떔시 다시 조회해쥼
@@ -47,8 +51,13 @@ export class MainComponent implements OnInit {
   go_new() {
     this.router.navigateByUrl("/new");
   }
-}
 
-export class DialogDataExampleDialog {
-  // constructor(@Inject(MAT_DIALOG_DATA) public data: DialogData) {}
+  async calc_total_remain() {
+    try {
+      await this.db.calc_total_remain();
+      this.load_data();
+    } catch (err) {
+      alert(err);
+    }
+  }
 }
